@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: Babo_development
+  pool: 5
+  username: Chandler
+  password:
+
+# test:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: Babo_test
+#   pool: 5
+#   username: Babo
+#   password:
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: Babo_production
+#   pool: 5
+#   username: Babo
+#   password:
