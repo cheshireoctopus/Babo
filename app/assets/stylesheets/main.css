@@ -1,0 +1,39 @@
+  #map {
+  background-color: #fff;
+  width:960px;
+  height:430px;
+  border: 2px solid black;
+}
+.mmcountry {
+  fill: #dfdfdf;
+  stroke: #d4d4cd;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+}
+
+.countryHover {
+  fill: #83A41C;
+}
+
+.countryHover:hover {
+  fill: #9FBC00;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.mminfo {
+  color: #222;
+  font-size: 1.2em;
+  padding: 12px 15px 13px 15px;
+  background: #e2e3e3;
+  position: absolute;
+  border:2px solid #83A41C;
+  border-radius:3px;
+}
+
+.mminfo:hover {
+  background: #9FBC00;
+  filter:alpha(opacity=80);
+  cursor: pointer;
+  color: #fff;
+}
