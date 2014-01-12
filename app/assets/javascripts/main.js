@@ -23,13 +23,17 @@ function map() {
   // Queue's appropriate json and tsv files; awaits function 'ready'
   queue()
     .defer(d3.json, "d3-world.json")
-    .defer(d3.tsv, "world-country-names.tsv")
+    .defer(d3.tsv, "names.tsv")
     .await(ready);
 
+  // Ready function; called from 'queue'
   function ready(error, world, names) {
 
     var countries = topojson.feature(world, world.objects.countries).features;
+    console.log(countries[0]);
+    console.log(countries);
 
+    //Matches country projection with name from tsv
     countries.forEach(function(d) {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
     });
@@ -41,7 +45,9 @@ function map() {
     }).attr("title", function(d, i) {
       return d.name;
     }).attr("d", path);
- }
+
+  }
+  //End 'Ready' function
 
   function hoverSpecific(d, i) {
     return 'mmcountry countryHover';
