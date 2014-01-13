@@ -37,3 +37,17 @@
   cursor: pointer;
   color: #fff;
 }
+
+#mapinfo {
+  position: absolute;
+  border: 1px solid white;
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  color: black;
+  pointer-events: none;
+}
+
+#mapinfo.hidden {
+  display: none;
+}
