@@ -5,14 +5,14 @@
   border: 2px solid black;
 }
 .mmcountry {
-  fill: #dfdfdf;
+  fill: rgb(42,95,62);
   stroke: #d4d4cd;
   stroke-width: .5px;
   stroke-linejoin: round;
 }
 
 .countryHover {
-  fill: #83A41C;
+  fill: rgb(42,95,62);
 }
 
 .countryHover:hover {
