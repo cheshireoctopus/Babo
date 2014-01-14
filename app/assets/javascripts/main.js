@@ -41,9 +41,10 @@ function map() {
     // console.log("countries:");
     // console.log(countries);
 
-    //Matches country projection with name from tsv
+    //Matches country projection with name and number from tsv
     countries.forEach(function(d) {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
+      d.number = names.filter(function(n) { return d.id == n.id; })[0].number;
     });
 
     // ?
@@ -57,7 +58,7 @@ function map() {
     }).attr("d", path)
     .on("mouseover", function(d, i){
       d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-      d3.select("#mapinfo").html("<p>"+d.name+"<p>").classed("hidden", false);
+      d3.select("#mapinfo").html("<p>"+d.name+"</p>"+"<p>"+d.number+"</p>").classed("hidden", false);
     })
     .on("mouseout", function(){
       d3.select("#mapinfo").classed("hidden", true);
