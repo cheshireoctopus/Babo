@@ -4,12 +4,12 @@
   height:430px;
   border: 2px solid black;
 }
-.mmcountry {
+./*mmcountry {
   fill: rgb(42,95,62);
   stroke: #d4d4cd;
   stroke-width: .5px;
   stroke-linejoin: round;
-}
+}*/
 
 .countryHover {
   fill: rgb(42,95,62);

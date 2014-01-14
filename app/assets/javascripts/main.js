@@ -1,5 +1,6 @@
 $(function() {
   map();
+  color = d3.scale.linear().domain([15,89]).range(["rgb(192,192,192)","rgb(42,95,62)"]);
 });
 
 function map() {
@@ -62,6 +63,9 @@ function map() {
     })
     .on("mouseout", function(){
       d3.select("#mapinfo").classed("hidden", true);
+    })
+    .style("fill", function(d){
+      return color(d.number);
     });
 
 
