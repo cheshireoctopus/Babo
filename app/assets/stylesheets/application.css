@@ -11,3 +11,33 @@
  *= require_self
  *= require_tree .
  */
+body {
+  margin: 0;
+}
+
+header {
+  /*height: 30px;*/
+  border-bottom: 1px solid #EEE;
+  background-color: rgb(37,90,60);
+}
+
+footer {
+  height: 40px;
+  width: 100%;
+  background-color: whiteSmoke;
+  border-top: 1px solid #DDD;
+  bottom: 0;
+  position: absolute;
+}
+
+header,
+footer {
+  padding: 5px;
+}
+
+#htitle {
+  color: #eee;
+  font-family: 'Exo 2', sans-serif; font-weight: 500;
+  font-size: 30px;
+  padding: 10px;
+}

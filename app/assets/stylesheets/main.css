@@ -2,7 +2,7 @@ h1 {
   color: rgb(40,95,60)
 }
 
-#container {
+#wrap {
   width: 100%;
   margin: 0 auto;
 }
