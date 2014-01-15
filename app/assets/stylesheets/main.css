@@ -16,7 +16,7 @@ h1 {
   font-size: 18px;
   position: absolute;
   background: black;
-  padding: 0 8px 0 8px;
+  padding: 15px;
   border-radius: 5px;
   color: white;
   opacity: 0.85;
@@ -26,6 +26,10 @@ h1 {
 
 #mapinfo.hidden {
   display: none;
+}
+
+.toolStudent {
+  font-size: 15px;
 }
 
 /*CLEAR*/

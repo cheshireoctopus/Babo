@@ -56,9 +56,9 @@ function map() {
         return d.name;
       }).attr("d", path)
       .on("mouseover", function(d, i){
-        d3.select(this).style("stroke","red").style("stroke-width","2px");
+        d3.select(this).style("stroke","black").style("stroke-width","1.25px");
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<span><strong>"+d.name+"</strong>: "+d.number+"</span>").classed("hidden", false);
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>").classed("hidden", false);
       })
       .on("mouseout", function(){
         d3.select(this).style("stroke","black").style("stroke-width","0.25px");
