@@ -9,18 +9,17 @@ h1 {
 
 #map {
   width: 100%;
-  border: 1px solid black;
   margin: auto;
 }
 
 #mapinfo {
-  font-size: 20px;
+  font-size: 18px;
   position: absolute;
-  background: #eee;
-  border: 1px solid rgb(40,95,60);
+  background: black;
   padding: 0 8px 0 8px;
   border-radius: 5px;
-  color: rgb(40,95,60);
+  color: white;
+  opacity: 0.85;
   box-shadow: 1px 1px 4px black;
   pointer-events: none;
 }
