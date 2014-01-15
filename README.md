@@ -5,5 +5,5 @@ A D3.js visualization of changes in Babson College's international student commu
 ### Technologies
 * HTML5/CSS3
 * Javascript + jQuery
-* Ruby on Rails
+* Ruby (1.9.3) on Rails (4.0.2)
 * D3.js

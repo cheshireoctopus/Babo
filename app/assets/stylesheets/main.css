@@ -1,24 +1,35 @@
+h1 {
+  color: rgb(40,95,60)
+}
+
 #container {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 }
 
 #map {
-  width: 90%;
-  border: 2px solid black;
+  width: 100%;
+  border: 1px solid black;
   margin: auto;
 }
 
 #mapinfo {
+  font-size: 20px;
   position: absolute;
-  border: 1px solid white;
-  background: white;
-  padding: 10px;
-  border-radius: 2px;
-  color: black;
+  background: #eee;
+  border: 1px solid rgb(40,95,60);
+  padding: 0 8px 0 8px;
+  border-radius: 5px;
+  color: rgb(40,95,60);
+  box-shadow: 1px 1px 4px black;
   pointer-events: none;
 }
 
 #mapinfo.hidden {
   display: none;
+}
+
+/*CLEAR*/
+.clear {
+  clear: both;
 }

@@ -12,7 +12,7 @@ $(function() {
 });
 
 function map() {
-  color = d3.scale.linear().domain([5,89]).range(["rgb(192,192,192)","rgb(42,95,62)"]);
+  color = d3.scale.linear().domain([5,89]).range(["rgb(192,192,192)","rgb(40,95,60)"]);
 
   // The SVG container for map
   var w = 960,
@@ -59,7 +59,7 @@ function map() {
       .on("mouseover", function(d, i){
         d3.select(this).style("stroke","red").style("stroke-width","2px");
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<p>"+d.name+"</p>"+"<p>"+d.number+"</p>").classed("hidden", false);
+        d3.select("#mapinfo").html("<p> <strong>"+d.name+"</strong> :"+d.number+"</p>").classed("hidden", false);
       })
       .on("mouseout", function(){
         d3.select(this).style("stroke","black").style("stroke-width","0.25px");
