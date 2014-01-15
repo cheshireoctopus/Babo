@@ -1,24 +1,31 @@
 $(function() {
-  w = ($('#map').width());
-  h = (w/2.5);
   map();
+  //Resize's SVG on window resize
+  var world = $("#svg_world"),
+        aspect = world.width() / world.height(),
+        container = world.parent();
+  $(window).on("resize", function() {
+    var targetWidth = container.width();
+    world.attr("width", targetWidth);
+    world.attr("height", Math.round(targetWidth/aspect));
+  }).trigger("resize");
 });
 
 function map() {
   color = d3.scale.linear().domain([5,89]).range(["rgb(192,192,192)","rgb(42,95,62)"]);
 
   // The SVG container for map
-  var width = 960,
-  height = 430;
+  var w = 960,
+        h = 430;
 
   // Defines projection as an equirectangular projection, translates, and scales it
-  var projection = d3.geo.equirectangular().translate([w/2.05, 260]).scale(175);
+  var projection = d3.geo.equirectangular().translate([470,260]).scale(155);
 
   // Defines the path of the projection
   var path = d3.geo.path().projection(projection);
 
   // Defines svg
-  var svg = d3.select("#map").append("svg").attr("width", w).attr("height", h).attr("id", "world");
+  var svg = d3.select("#map").append("svg").attr("viewBox","0 0 960 430").attr("width", w).attr("height", h).attr("id", "svg_world");
 
   // Queue's appropriate json and tsv files; awaits function 'ready'; the order of files deferred matters
   queue()
@@ -66,11 +73,4 @@ function map() {
   }
   //End 'Ready' function
 
-}
-
-
-function hideAnt() {
-  world = $('#world');
-  abc = world.children()[6];
-  abc.style.display='none';
 }
