@@ -35,3 +35,8 @@ footer {
   font-family: 'Exo 2', sans-serif; font-weight: 500;
   font-size: 25px;
 }
+
+#wip {
+  font-family: 'Exo 2', sans-serif; font-weight: 300;
+  color: black;
+}
