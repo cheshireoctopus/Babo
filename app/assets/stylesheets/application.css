@@ -16,9 +16,9 @@ body {
 }
 
 header {
-  /*height: 30px;*/
   border-bottom: 1px solid #EEE;
   background-color: rgb(37,90,60);
+  padding: 25px;
 }
 
 footer {
@@ -30,14 +30,8 @@ footer {
   position: absolute;
 }
 
-header,
-footer {
-  padding: 5px;
-}
-
 #htitle {
   color: #eee;
   font-family: 'Exo 2', sans-serif; font-weight: 500;
-  font-size: 30px;
-  padding: 10px;
+  font-size: 25px;
 }
