@@ -1,7 +1,12 @@
-  #map {
-  width:960px;
-  height:430px;
+#container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#map {
+  width: 90%;
   border: 2px solid black;
+  margin: auto;
 }
 
 #mapinfo {
