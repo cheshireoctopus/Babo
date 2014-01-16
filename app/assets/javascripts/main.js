@@ -56,13 +56,16 @@ function map() {
         return d.name;
       }).attr("d", path)
       .on("mouseover", function(d, i){
-        d3.select(this).style("stroke","black").style("stroke-width","1.25px");
+        $("#map").append("<div id='tooltip'></div>");
+        d3.select("#tooltip").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>");
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>").classed("hidden", false);
+        d3.select(this).style("stroke","black").style("stroke-width","1.25px");
       })
       .on("mouseout", function(){
         d3.select(this).style("stroke","black").style("stroke-width","0.25px");
         d3.select("#mapinfo").classed("hidden", true);
+        $('#tooltip').remove();
       })
       .style("fill", function(d){
         return color(d.number);
