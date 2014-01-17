@@ -58,7 +58,7 @@ function map() {
       }).attr("d", path)
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" students</span>").classed("hidden", false);
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
         d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
       })
       .on("mouseout", function(){
@@ -102,7 +102,17 @@ window.onload = function() {
     var mapinfo = d3.select("#mapinfo");
     //Total
     if (select.value == 'Total') {
-      path.transition(1000).style("fill",function(d){
+      path
+      .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
+      .transition(1000).style("fill",function(d){
         if (d.total == 0){
           return "#e5f5e0";
         } else if (d.total < 5){
@@ -123,7 +133,17 @@ window.onload = function() {
     //End Total
     //Undergraduate
     if (select.value == 'Undergraduate') {
-      path.transition(1000).style("fill",function(d){
+      path
+      .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
+      .transition(1000).style("fill",function(d){
         if (d.ugrad == 0){
           return "#e5f5e0";
         } else if (d.ugrad < 5){
@@ -144,7 +164,17 @@ window.onload = function() {
     //End Undergraduate
     //Graduate
     if (select.value == 'Graduate') {
-      path.transition(1000).style("fill",function(d){
+      path
+      .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
+      .transition(1000).style("fill",function(d){
         if (d.grad == 0){
           return "#e5f5e0";
         } else if (d.grad < 5){
@@ -165,7 +195,17 @@ window.onload = function() {
     //End Graduate
     //Exchange
     if (select.value == 'Exchange') {
-      path.transition(1000).style("fill",function(d){
+      path
+        .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
+      .transition(1000).style("fill",function(d){
         if (d.exchange == 0){
           return "#e5f5e0";
         } else if (d.exchange < 5){
