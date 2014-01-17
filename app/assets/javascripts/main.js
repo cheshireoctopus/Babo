@@ -12,7 +12,6 @@ $(function() {
 });
 
 function map() {
-  var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
   // The SVG container for map
   var w = 960,
         h = 430;
@@ -38,7 +37,7 @@ function map() {
     // ?
     var countries = topojson.feature(world, world.objects.countries).features;
 
-    //Matches country projection with name and number from tsv
+    //Loop that matches country projection with name and number from tsv
     countries.forEach(function(d) {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
       d.number = names.filter(function(n) { return d.id == n.id; })[0].number;
@@ -49,13 +48,13 @@ function map() {
 
     // ?
     country.enter().insert("path")
-      .attr("class", function(d, i){
+      .attr("class", function(d){
         return "country";
       })
-      .attr("title", function(d, i) {
+      .attr("title", function(d) {
         return d.name;
       }).attr("d", path)
-      .on("mouseover", function(d, i){
+      .on("mouseover", function(d){
         $("#map").append("<div id='tooltip'></div>");
         d3.select("#tooltip").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>");
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
@@ -68,7 +67,22 @@ function map() {
         $('#tooltip').remove();
       })
       .style("fill", function(d){
-        return color(d.number);
+        if (d.number == 0){
+          return "#f7fcf5";
+        } else if (d.number < 5){
+          return "#a1d99b";
+        } else if (d.number < 10){
+          return "#74c476";
+        } else if (d.number < 20){
+          return "#41ab5d";
+        } else if (d.number < 40){
+          return "#238b45";
+        } else if (d.number < 60){
+          return "#006d2c";
+        } else {
+          return "#00441b";
+        }
+        // return color(d.number);
       })
       .style("stroke","black")
       .style("stroke-width", "0.25px");
@@ -76,3 +90,5 @@ function map() {
   //End 'Ready' function
 
 }
+
+  // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
