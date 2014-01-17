@@ -34,12 +34,13 @@ footer {
 #htitle {
   color: #eee;
   font-family: 'Exo 2', sans-serif; font-weight: 500;
-  font-size: 25px;
+  font-size: 125%;
 }
 
 #ftitle {
   padding: 1%;
   font-family: 'Exo 2', sans-serif; font-weight: 300;
+  font-size: 75%;
 }
 
 #wip {

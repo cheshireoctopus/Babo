@@ -9,6 +9,7 @@ $(function() {
     world.attr("width", targetWidth);
     world.attr("height", Math.round(targetWidth/aspect));
   }).trigger("resize");
+  // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
 });
 
 function map() {
@@ -28,7 +29,7 @@ function map() {
   // Queue's appropriate json and tsv files; awaits function 'ready'; the order of files deferred matters
   queue()
     .defer(d3.json, "d3-world.json")
-    .defer(d3.tsv, "names.tsv")
+    .defer(d3.tsv, "names2.tsv")
     .await(ready);
 
   // Ready function; called from 'queue'; takes three params: error, world (1st defer), names (2nd defer);
@@ -40,7 +41,7 @@ function map() {
     //Loop that matches country projection with name and number from tsv
     countries.forEach(function(d) {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
-      d.number = names.filter(function(n) { return d.id == n.id; })[0].number;
+      d.ugrad = names.filter(function(n) { return d.id == n.id; })[0].ugrad;
     });
 
     // Define var 'country' as all svg elements with class 'country'; append data from var 'countries'
@@ -48,15 +49,13 @@ function map() {
 
     // ?
     country.enter().insert("path")
-      .attr("class", function(d){
-        return "country";
-      })
+      .attr("class", "country")
       .attr("title", function(d) {
         return d.name;
       }).attr("d", path)
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>").classed("hidden", false);
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" students</span>").classed("hidden", false);
         d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
       })
       .on("mouseout", function(){
@@ -65,17 +64,17 @@ function map() {
       })
       .style("cursor", "pointer")
       .style("fill", function(d){
-        if (d.number == 0){
+        if (d.ugrad == 0){
           return "#e5f5e0";
-        } else if (d.number < 5){
+        } else if (d.ugrad < 5){
           return "#a1d99b";
-        } else if (d.number < 10){
+        } else if (d.ugrad < 10){
           return "#74c476";
-        } else if (d.number < 20){
+        } else if (d.ugrad < 20){
           return "#41ab5d";
-        } else if (d.number < 40){
+        } else if (d.ugrad < 40){
           return "#238b45";
-        } else if (d.number < 60){
+        } else if (d.ugrad < 60){
           return "#006d2c";
         } else {
           return "#00441b";
@@ -88,5 +87,7 @@ function map() {
 
 }
 
-  // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
-
+function total() {
+  var abc = d3.selectAll(".country");
+  console.log(abc);
+}

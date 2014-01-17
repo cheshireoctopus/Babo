@@ -29,8 +29,14 @@ h1 {
   display: none;
 }
 
-.toolStudent {
-  font-size: 15px;
+nav {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nav_button {
+  display: inline;
+  margin: 3%;
 }
 
 /*CLEAR*/
