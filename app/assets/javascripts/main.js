@@ -42,6 +42,7 @@ function map() {
     countries.forEach(function(d) {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
       d.ugrad = names.filter(function(n) { return d.id == n.id; })[0].ugrad;
+      d.grad = names.filter(function(n) {return d.id == n.id; })[0].grad;
     });
 
     // Define var 'country' as all svg elements with class 'country'; append data from var 'countries'
@@ -87,7 +88,31 @@ function map() {
 
 }
 
-function total() {
-  var abc = d3.selectAll(".country");
-  console.log(abc);
-}
+////////////////////////
+// Navigation Functions//
+////////////////////////
+
+window.onload = function() {
+
+  // Event function
+  var handler = function() {
+    if (select.value == 'Total') {
+      console.log('Total');
+    } else if (select.value == 'Undergraduate'){
+      console.log('Undergraduate');
+    } else if (select.value == 'Graduate'){
+      console.log('Graduate');
+    } else if (select.value == 'Exchange') {
+      console.log('Exchange');
+    }
+  };
+
+  // Add event listener
+  var select = document.getElementById('view');
+  if(select.addEventListener){
+    select.addEventListener('change',handler,false);
+  } else {
+    select.attachEvent('onchange',handler,false);
+  }
+
+};
