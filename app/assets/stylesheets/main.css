@@ -5,6 +5,7 @@ h1 {
 #wrap {
   width: 100%;
   margin: 0 auto;
+  background: #f7fcf5;
 }
 
 #map {
@@ -36,3 +37,4 @@ h1 {
 .clear {
   clear: both;
 }
+

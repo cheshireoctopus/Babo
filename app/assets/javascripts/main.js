@@ -55,20 +55,18 @@ function map() {
         return d.name;
       }).attr("d", path)
       .on("mouseover", function(d){
-        $("#map").append("<div id='tooltip'></div>");
-        d3.select("#tooltip").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>");
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.number+" students</span>").classed("hidden", false);
-        d3.select(this).style("stroke","black").style("stroke-width","1.25px");
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
       })
       .on("mouseout", function(){
-        d3.select(this).style("stroke","black").style("stroke-width","0.25px");
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
         d3.select("#mapinfo").classed("hidden", true);
-        $('#tooltip').remove();
       })
+      .style("cursor", "pointer")
       .style("fill", function(d){
         if (d.number == 0){
-          return "#f7fcf5";
+          return "#e5f5e0";
         } else if (d.number < 5){
           return "#a1d99b";
         } else if (d.number < 10){
@@ -82,7 +80,6 @@ function map() {
         } else {
           return "#00441b";
         }
-        // return color(d.number);
       })
       .style("stroke","black")
       .style("stroke-width", "0.25px");
@@ -92,3 +89,4 @@ function map() {
 }
 
   // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
+

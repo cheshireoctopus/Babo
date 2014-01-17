@@ -13,6 +13,7 @@
  */
 body {
   margin: 0;
+  background: #f7fcf5;
 }
 
 header {
@@ -22,18 +23,23 @@ header {
 }
 
 footer {
-  height: 40px;
   width: 100%;
   background-color: whiteSmoke;
   border-top: 1px solid #DDD;
   bottom: 0;
   position: absolute;
+  text-align: center;
 }
 
 #htitle {
   color: #eee;
   font-family: 'Exo 2', sans-serif; font-weight: 500;
   font-size: 25px;
+}
+
+#ftitle {
+  padding: 1%;
+  font-family: 'Exo 2', sans-serif; font-weight: 300;
 }
 
 #wip {
