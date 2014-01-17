@@ -98,8 +98,92 @@ window.onload = function() {
 
   // Event function
   var handler = function() {
-   console.log(select.value);
-
+    var path = d3.selectAll("path");
+    var mapinfo = d3.select("#mapinfo");
+    //Total
+    if (select.value == 'Total') {
+      path.transition(1000).style("fill",function(d){
+        if (d.total == 0){
+          return "#e5f5e0";
+        } else if (d.total < 5){
+          return "#a1d99b";
+        } else if (d.total < 10){
+          return "#74c476";
+        } else if (d.total < 20){
+          return "#41ab5d";
+        } else if (d.total < 40){
+          return "#238b45";
+        } else if (d.total < 60){
+          return "#006d2c";
+        } else if (d.total < 400) {
+          return "#00441b";
+        }
+        });
+    }
+    //End Total
+    //Undergraduate
+    if (select.value == 'Undergraduate') {
+      path.transition(1000).style("fill",function(d){
+        if (d.ugrad == 0){
+          return "#e5f5e0";
+        } else if (d.ugrad < 5){
+          return "#a1d99b";
+        } else if (d.ugrad < 10){
+          return "#74c476";
+        } else if (d.ugrad < 20){
+          return "#41ab5d";
+        } else if (d.ugrad < 40){
+          return "#238b45";
+        } else if (d.ugrad < 60){
+          return "#006d2c";
+        } else if (d.ugrad < 400) {
+          return "#00441b";
+        }
+        });
+    }
+    //End Undergraduate
+    //Graduate
+    if (select.value == 'Graduate') {
+      path.transition(1000).style("fill",function(d){
+        if (d.grad == 0){
+          return "#e5f5e0";
+        } else if (d.grad < 5){
+          return "#a1d99b";
+        } else if (d.grad < 10){
+          return "#74c476";
+        } else if (d.grad < 20){
+          return "#41ab5d";
+        } else if (d.grad < 40){
+          return "#238b45";
+        } else if (d.grad < 60){
+          return "#006d2c";
+        } else if (d.grad < 400) {
+          return "#00441b";
+        }
+        });
+    }
+    //End Graduate
+    //Exchange
+    if (select.value == 'Exchange') {
+      path.transition(1000).style("fill",function(d){
+        if (d.exchange == 0){
+          return "#e5f5e0";
+        } else if (d.exchange < 5){
+          return "#a1d99b";
+        } else if (d.exchange < 10){
+          return "#74c476";
+        } else if (d.exchange < 20){
+          return "#41ab5d";
+        } else if (d.exchange < 40){
+          return "#238b45";
+        } else if (d.exchange < 60){
+          return "#006d2c";
+        } else if (d.exchange < 400) {
+          return "#00441b";
+        }
+        });
+    }
+    //End Exchange
   };
 
   // Add event listener
