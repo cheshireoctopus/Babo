@@ -29,6 +29,106 @@ function map() {
   // Queue's appropriate json and tsv files; awaits function 'ready'; the order of files deferred matters
   queue()
     .defer(d3.json, "d3-world.json")
+    .defer(d3.tsv, "names3.tsv")
+    .await(ready);
+
+  // Ready function; called from 'queue'; takes three params: error, world (1st defer), names (2nd defer);
+  function ready(error, world, names) {
+
+    // ?
+    var countries = topojson.feature(world, world.objects.countries).features;
+
+    //Loop that matches country projection with name and number from tsv
+    countries.forEach(function(d) {
+      d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
+      d.ugrad = names.filter(function(n) { return d.id == n.id; })[0].ugrad;
+      d.grad = names.filter(function(n) {return d.id == n.id; })[0].grad;
+      d.exchange = names.filter(function(n) {return d.id == n.id; })[0].exchange;
+      d.total = names.filter(function(n) {return d.id == n.id;})[0].total;
+    });
+
+    // Define var 'country' as all svg elements with class 'country'; append data from var 'countries'
+    var country = svg.selectAll(".country").data(countries);
+
+    // ?
+    country.enter().insert("path")
+      .attr("class", "country")
+      .attr("title", function(d) {
+        return d.name;
+      }).attr("d", path)
+      .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
+      .style("cursor", "pointer")
+      .style("fill", function(d){
+        if (d.total == 0){
+          return "#e5f5e0";
+        } else if (d.total < 5){
+          return "#a1d99b";
+        } else if (d.total < 10){
+          return "#74c476";
+        } else if (d.total < 20){
+          return "#41ab5d";
+        } else if (d.total < 40){
+          return "#238b45";
+        } else if (d.total < 60){
+          return "#006d2c";
+        } else {
+          return "#00441b";
+        }
+      })
+      .style("stroke","black")
+      .style("stroke-width", "0.25px");
+  }
+  //End 'Ready' function
+
+}
+
+////////////////////////
+// Navigation Functions//
+////////////////////////
+
+window.onload = function() {
+
+  // Event function
+  var handler = function() {
+   console.log(select.value);
+
+  };
+
+  // Add event listener
+  var select = document.getElementById('view');
+  if(select.addEventListener){
+    select.addEventListener('change',handler,false);
+  } else {
+    select.attachEvent('onchange',handler,false);
+  }
+
+};
+
+function total() {
+  // The SVG container for map
+  var w = 960,
+        h = 430;
+
+  // Defines projection as an equirectangular projection, translates, and scales it
+  var projection = d3.geo.equirectangular().translate([470,260]).scale(155);
+
+  // Defines the path of the projection
+  var path = d3.geo.path().projection(projection);
+
+  // Defines svg
+  var svg = d3.select("#map").append("svg").attr("viewBox","0 0 960 430").attr("width", w).attr("height", h).attr("id", "svg_world");
+
+  // Queue's appropriate json and tsv files; awaits function 'ready'; the order of files deferred matters
+  queue()
+    .defer(d3.json, "d3-world.json")
     .defer(d3.tsv, "names2.tsv")
     .await(ready);
 
@@ -43,6 +143,7 @@ function map() {
       d.name = names.filter(function(n) { return d.id == n.id; })[0].name;
       d.ugrad = names.filter(function(n) { return d.id == n.id; })[0].ugrad;
       d.grad = names.filter(function(n) {return d.id == n.id; })[0].grad;
+      d.exchange = names.filter(function(n) {return d.id == n.id; })[0].exchange;
     });
 
     // Define var 'country' as all svg elements with class 'country'; append data from var 'countries'
@@ -55,8 +156,9 @@ function map() {
         return d.name;
       }).attr("d", path)
       .on("mouseover", function(d){
+        console.log(d);
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" students</span>").classed("hidden", false);
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+(d.ugrad+d.grad+d.exchange)+" students</span>").classed("hidden", false);
         d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
       })
       .on("mouseout", function(){
@@ -87,32 +189,3 @@ function map() {
   //End 'Ready' function
 
 }
-
-////////////////////////
-// Navigation Functions//
-////////////////////////
-
-window.onload = function() {
-
-  // Event function
-  var handler = function() {
-    if (select.value == 'Total') {
-      console.log('Total');
-    } else if (select.value == 'Undergraduate'){
-      console.log('Undergraduate');
-    } else if (select.value == 'Graduate'){
-      console.log('Graduate');
-    } else if (select.value == 'Exchange') {
-      console.log('Exchange');
-    }
-  };
-
-  // Add event listener
-  var select = document.getElementById('view');
-  if(select.addEventListener){
-    select.addEventListener('change',handler,false);
-  } else {
-    select.attachEvent('onchange',handler,false);
-  }
-
-};
