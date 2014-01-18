@@ -126,7 +126,7 @@ function total() {
         d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
         d3.select("#mapinfo").classed("hidden", true);
       })
-      .transition(1000).style("fill",function(d){
+      .transition().style("fill",function(d){
         if (d.total == 0){
           return "#e5f5e0";
         } else if (d.total < 5){

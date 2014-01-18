@@ -35,16 +35,17 @@ footer {
   color: #eee;
   font-family: 'Exo 2', sans-serif; font-weight: 700;
   font-size: 125%;
-  text-align: center;
 }
 
-#hclass {
-
-}
-
-#wip {
+#note {
   font-family: 'Exo 2', sans-serif; font-weight: 300;
   color: black;
+  margin-left: 1%;
+}
+
+.hclass {
+  display: inline-block;
+  text-align: center;
 }
 
 #ftitle {
