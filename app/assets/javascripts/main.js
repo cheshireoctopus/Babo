@@ -1,5 +1,6 @@
 $(function() {
   map();
+  timerz();
   //Resize's SVG on window resize
   var world = $("#svg_world"),
         aspect = world.width() / world.height(),
@@ -12,6 +13,26 @@ $(function() {
   // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
 });
 
+//Timer Function
+function timerz() {
+  setTimeout(function() {
+    total();
+  },1000);
+  setTimeout(function() {
+    undergraduate();
+  },2000);
+  setTimeout(function() {
+    graduate();
+  },3000);
+  setTimeout(function() {
+    exchange();
+  },4000);
+  setTimeout(function() {
+    total();
+  },5000);
+}
+
+//Main Map Function
 function map() {
   // The SVG container for map
   var w = 960,
@@ -29,13 +50,13 @@ function map() {
   // Queue's appropriate json and tsv files; awaits function 'ready'; the order of files deferred matters
   queue()
     .defer(d3.json, "d3-world.json")
-    .defer(d3.tsv, "names3.tsv")
+    .defer(d3.tsv, "names.tsv")
     .await(ready);
 
   // Ready function; called from 'queue'; takes three params: error, world (1st defer), names (2nd defer);
   function ready(error, world, names) {
 
-    // ?
+    // Defines countries
     var countries = topojson.feature(world, world.objects.countries).features;
 
     //Loop that matches country projection with name and number from tsv
@@ -50,39 +71,14 @@ function map() {
     // Define var 'country' as all svg elements with class 'country'; append data from var 'countries'
     var country = svg.selectAll(".country").data(countries);
 
-    // ?
+    //For each country, inserts path and styling
     country.enter().insert("path")
       .attr("class", "country")
       .attr("title", function(d) {
         return d.name;
       }).attr("d", path)
-      .on("mouseover", function(d){
-        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
-        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-      })
-      .on("mouseout", function(){
-        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-        d3.select("#mapinfo").classed("hidden", true);
-      })
+      .style("fill", "#ddd")
       .style("cursor", "pointer")
-      .style("fill", function(d){
-        if (d.total == 0){
-          return "#e5f5e0";
-        } else if (d.total < 5){
-          return "#a1d99b";
-        } else if (d.total < 10){
-          return "#74c476";
-        } else if (d.total < 20){
-          return "#41ab5d";
-        } else if (d.total < 40){
-          return "#238b45";
-        } else if (d.total < 60){
-          return "#006d2c";
-        } else if (d.total < 400) {
-          return "#00441b";
-        }
-      })
       .style("stroke","black")
       .style("stroke-width", "0.25px");
   }
@@ -90,19 +86,37 @@ function map() {
 
 }
 
-////////////////////////
-// Navigation Functions//
-////////////////////////
-
 window.onload = function() {
+
+  path = d3.selectAll("path");
+  mapinfo = d3.select("#mapinfo");
 
   // Event function
   var handler = function() {
-    var path = d3.selectAll("path");
-    var mapinfo = d3.select("#mapinfo");
-    //Total
-    if (select.value == 'Total Students') {
-      path
+    if (select.value == "Total Students") {
+      total();
+    } else if (select.value == "Undergraduate") {
+      undergraduate();
+    } else if (select.value == "Graduate") {
+      graduate();
+    } else if (select.value == "Exchange") {
+      exchange();
+    }
+
+  };
+
+  // Add event listener
+  var select = document.getElementById('view');
+  if(select.addEventListener){
+    select.addEventListener('change',handler,false);
+  } else {
+    select.attachEvent('onchange',handler,false);
+  }
+
+};
+
+function total() {
+  path
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
@@ -125,15 +139,14 @@ window.onload = function() {
           return "#238b45";
         } else if (d.total < 60){
           return "#006d2c";
-        } else if (d.total < 400) {
+        } else {
           return "#00441b";
         }
         });
-    }
-    //End Total
-    //Undergraduate
-    if (select.value == 'Undergraduate') {
-      path
+}
+
+function undergraduate() {
+  path
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
@@ -156,15 +169,14 @@ window.onload = function() {
           return "#238b45";
         } else if (d.ugrad < 60){
           return "#006d2c";
-        } else if (d.ugrad < 400) {
+        } else {
           return "#00441b";
         }
-        });
-    }
-    //End Undergraduate
-    //Graduate
-    if (select.value == 'Graduate') {
-      path
+      });
+}
+
+function graduate() {
+  path
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
@@ -187,15 +199,14 @@ window.onload = function() {
           return "#238b45";
         } else if (d.grad < 60){
           return "#006d2c";
-        } else if (d.grad < 400) {
+        } else {
           return "#00441b";
         }
-        });
-    }
-    //End Graduate
-    //Exchange
-    if (select.value == 'Exchange') {
-      path
+      });
+}
+
+function exchange() {
+  path
         .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
@@ -208,31 +219,12 @@ window.onload = function() {
       .transition(1000).style("fill",function(d){
         if (d.exchange == 0){
           return "#e5f5e0";
-        } else if (d.exchange < 5){
+        } else if (d.exchange <= 1){
           return "#a1d99b";
-        } else if (d.exchange < 10){
-          return "#74c476";
-        } else if (d.exchange < 20){
-          return "#41ab5d";
-        } else if (d.exchange < 40){
+        } else if (d.exchange <= 3){
           return "#238b45";
-        } else if (d.exchange < 60){
-          return "#006d2c";
-        } else if (d.exchange < 400) {
+        } else {
           return "#00441b";
         }
-        });
-    }
-    //End Exchange
-  };
-
-  // Add event listener
-  var select = document.getElementById('view');
-  if(select.addEventListener){
-    select.addEventListener('change',handler,false);
-  } else {
-    select.attachEvent('onchange',handler,false);
-  }
-
-};
-
+      });
+}

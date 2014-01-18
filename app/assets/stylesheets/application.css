@@ -35,6 +35,16 @@ footer {
   color: #eee;
   font-family: 'Exo 2', sans-serif; font-weight: 700;
   font-size: 125%;
+  text-align: center;
+}
+
+#hclass {
+
+}
+
+#wip {
+  font-family: 'Exo 2', sans-serif; font-weight: 300;
+  color: black;
 }
 
 #ftitle {
@@ -43,7 +53,4 @@ footer {
   font-size: 75%;
 }
 
-#wip {
-  font-family: 'Exo 2', sans-serif; font-weight: 300;
-  color: black;
-}
+
