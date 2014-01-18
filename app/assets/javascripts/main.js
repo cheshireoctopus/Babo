@@ -101,7 +101,7 @@ window.onload = function() {
     var path = d3.selectAll("path");
     var mapinfo = d3.select("#mapinfo");
     //Total
-    if (select.value == 'Total') {
+    if (select.value == 'Total Students') {
       path
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");

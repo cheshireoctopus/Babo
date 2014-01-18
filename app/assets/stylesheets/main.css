@@ -9,11 +9,43 @@ h1 {
   text-align: center;
 }
 
+/*NAVIGATION*/
+.styled-select {
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 20%;
+  overflow: hidden;
+  background: url(/arrow.png) no-repeat right #ddd;
+  border: 5px solid rgb(37,90,60);
+}
+
+.styled-select select {
+  background: transparent;
+  width: 100%;
+  padding: 5px;
+  font-size: 100%;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  height: 34px;
+  -webkit-appearance: none;
+}
+
+/*#styled-select:hover {
+  border-color: black;
+}
+
+#styled-select select:hover {
+  cursor: pointer;
+}
+*/
+/*MAP*/
 #map {
   width: 100%;
   margin: auto;
 }
 
+/*TOOLTIP*/
 #mapinfo {
   font-size: 18px;
   position: absolute;
@@ -28,27 +60,6 @@ h1 {
 
 #mapinfo.hidden {
   display: none;
-}
-
-.styled-select select {
-   background: transparent;
-   width: 268px;
-   padding: 5px;
-   font-size: 16px;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: 34px;
-   -webkit-appearance: none;
-   }
-
-.styled-select {
-  margin: 0 auto;
-  width: 240px;
-  height: 34px;
-  overflow: hidden;
-  background: url(/arrow.png) no-repeat right #ddd;
-  border: 1px solid #ccc;
 }
 
 /*CLEAR*/
