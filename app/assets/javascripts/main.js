@@ -1,6 +1,5 @@
 $(function() {
   map();
-  timerz();
   //Resize's SVG on window resize
   var world = $("#svg_world"),
         aspect = world.width() / world.height(),
