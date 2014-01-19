@@ -1,5 +1,9 @@
 $(function() {
   map();
+  timerz();
+  setTimeout(function(){
+    $(".styled-select").css("visibility","visible");
+  },5000);
   //Resize's SVG on window resize
   var world = $("#svg_world"),
         aspect = world.width() / world.height(),
