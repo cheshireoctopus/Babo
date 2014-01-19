@@ -1,8 +1,8 @@
 $(function() {
   map();
   setTimeout(function(){
-    $(".styled-select").css("visibility","visible");
-  },2000);
+    total();
+  },500);
   //Resize's SVG on window resize
   var world = $("#svg_world"),
         aspect = world.width() / world.height(),
@@ -15,24 +15,6 @@ $(function() {
   // var color = d3.scale.ordinal().domain([0,8]).range(["#f7fcf5","#e5f5e0","#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#006d2c","#00441b"] );
 });
 
-//Timer Function
-function timerz() {
-  setTimeout(function() {
-    total();
-  },1000);
-  setTimeout(function() {
-    undergraduate();
-  },2000);
-  setTimeout(function() {
-    graduate();
-  },3000);
-  setTimeout(function() {
-    exchange();
-  },4000);
-  setTimeout(function() {
-    total();
-  },5000);
-}
 
 //Main Map Function
 function map() {
@@ -104,9 +86,7 @@ window.onload = function() {
     } else if (select.value == "Exchange") {
       exchange();
     }
-
   };
-
   // Add event listener
   var select = document.getElementById('view');
   if(select.addEventListener){
@@ -114,6 +94,7 @@ window.onload = function() {
   } else {
     select.attachEvent('onchange',handler,false);
   }
+};
 
 function total() {
   path
@@ -228,7 +209,3 @@ function exchange() {
         }
       });
 }
-
-
-};
-

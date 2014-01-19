@@ -7,10 +7,9 @@
 
 /*NAVIGATION*/
 .styled-select {
-  visibility: hidden;
   margin: 0 auto;
   margin-top: 1%;
-  width: 20%;
+  width: 15%;
   overflow: hidden;
   background: url(/arrow.png) no-repeat right #ddd;
   border: 5px solid rgb(37,90,60);
@@ -28,11 +27,7 @@
   -webkit-appearance: none;
 }
 
-#styled-select:hover {
-  border-color: black;
-}
-
-#styled-select select:hover {
+.styled-select select:hover {
   cursor: pointer;
 }
 
