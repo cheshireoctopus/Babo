@@ -115,8 +115,6 @@ window.onload = function() {
     select.attachEvent('onchange',handler,false);
   }
 
-};
-
 function total() {
   path
       .on("mouseover", function(d){
@@ -230,3 +228,7 @@ function exchange() {
         }
       });
 }
+
+
+};
+
