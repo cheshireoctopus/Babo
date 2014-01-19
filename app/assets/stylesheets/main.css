@@ -28,14 +28,14 @@
   -webkit-appearance: none;
 }
 
-/*#styled-select:hover {
+#styled-select:hover {
   border-color: black;
 }
 
 #styled-select select:hover {
   cursor: pointer;
 }
-*/
+
 /*MAP*/
 #map {
   width: 100%;
