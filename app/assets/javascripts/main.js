@@ -58,6 +58,15 @@ function map() {
       .attr("title", function(d) {
         return d.name;
       }).attr("d", path)
+      .on("mouseover", function(d){
+        d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+        d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
+        d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+      })
+      .on("mouseout", function(){
+        d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+        d3.select("#mapinfo").classed("hidden", true);
+      })
       .style("fill", "#ddd")
       .style("cursor", "pointer")
       .style("stroke","black")
