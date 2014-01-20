@@ -58,7 +58,7 @@ function map() {
       .attr("title", function(d) {
         return d.name;
       }).attr("d", path)
-      .on("mouseover", function(d){
+      . on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
         d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
@@ -100,6 +100,7 @@ window.onload = function() {
   // Event function
   var handler = function() {
     if (select.value == "Total Students") {
+      console.log('working!');
       paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
@@ -128,6 +129,7 @@ window.onload = function() {
         }
         });
     } else if (select.value == "Undergraduate") {
+      console.log('working!');
       paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
@@ -156,6 +158,7 @@ window.onload = function() {
         }
       });
     } else if (select.value == "Graduate") {
+      console.log('working!');
       paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
@@ -184,6 +187,7 @@ window.onload = function() {
         }
       });
     } else if (select.value == "Exchange") {
+      console.log('working!');
       paths
         .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
