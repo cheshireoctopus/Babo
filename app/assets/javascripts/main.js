@@ -91,26 +91,7 @@ window.onload = function() {
   // Event function
   var handler = function() {
     if (select.value == "Total Students") {
-      total();
-    } else if (select.value == "Undergraduate") {
-      undergraduate();
-    } else if (select.value == "Graduate") {
-      graduate();
-    } else if (select.value == "Exchange") {
-      exchange();
-    }
-  };
-  // Add event listener
-  var select = document.getElementById('view');
-  if(select.addEventListener){
-    select.addEventListener('change',handler,false);
-  } else {
-    select.attachEvent('onchange',handler,false);
-  }
-};
-
-function total() {
-  paths
+      paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
@@ -137,10 +118,8 @@ function total() {
           return "#00441b";
         }
         });
-}
-
-function undergraduate() {
-  paths
+    } else if (select.value == "Undergraduate") {
+      paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
@@ -167,10 +146,8 @@ function undergraduate() {
           return "#00441b";
         }
       });
-}
-
-function graduate() {
-  paths
+    } else if (select.value == "Graduate") {
+      paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
@@ -197,10 +174,8 @@ function graduate() {
           return "#00441b";
         }
       });
-}
-
-function exchange() {
-  paths
+    } else if (select.value == "Exchange") {
+      paths
         .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
@@ -221,4 +196,14 @@ function exchange() {
           return "#00441b";
         }
       });
-}
+    }
+  };
+  // Add event listener
+  var select = document.getElementById('view');
+  if(select.addEventListener){
+    select.addEventListener('change',handler,false);
+  } else {
+    select.attachEvent('onchange',handler,false);
+  }
+};
+
