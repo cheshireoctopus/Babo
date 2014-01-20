@@ -13,8 +13,25 @@ $(function() {
 
 
   // Navigation
+  $('#nav1').css("text-decoration", "underline");
+  $('.navi').click(function(){
+    $('.navi').css("text-decoration", "none");
+  });
+  $('#nav1').click(function(){
+    $(this).css("text-decoration", "underline");
+    total();
+  });
   $('#nav2').click(function(){
+    $(this).css("text-decoration", "underline");
     undergraduate();
+  });
+  $('#nav3').click(function(){
+    $(this).css("text-decoration", "underline");
+    graduate();
+  });
+  $('#nav4').click(function(){
+    $(this).css("text-decoration", "underline");
+    exchange();
   });
 });
 
@@ -98,149 +115,120 @@ function map() {
   //End 'Ready' function
 }
 
-function undergraduate(){
-  var paths = d3.selectAll("path"),
-        mapinfo = d3.select("#mapinfo");
-   paths
-    .on("mouseover", function(d){
-      d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-      d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
-      d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-    })
-    .on("mouseout", function(){
-      d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-      d3.select("#mapinfo").classed("hidden", true);
-    })
-    .transition(1000).style("fill",function(d){
-      if (d.ugrad == 0){
-        return "#e5f5e0";
-      } else if (d.ugrad < 5){
-        return "#a1d99b";
-      } else if (d.ugrad < 10){
-        return "#74c476";
-      } else if (d.ugrad < 20){
-        return "#41ab5d";
-      } else if (d.ugrad < 40){
-        return "#238b45";
-      } else if (d.ugrad < 60){
-        return "#006d2c";
-      } else {
-        return "#00441b";
-      }
-    });
+function total(){
+  var paths = d3.selectAll("path");
+  paths
+  .on("mouseover", function(d){
+    d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+    d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Undergraduate students</span>").classed("hidden", false);
+    d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+  })
+  .on("mouseout", function(){
+    d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+    d3.select("#mapinfo").classed("hidden", true);
+  })
+  .transition(1000).style("fill",function(d){
+    if (d.total == 0){
+      return "#e5f5e0";
+    } else if (d.total < 5){
+      return "#a1d99b";
+    } else if (d.total < 10){
+      return "#74c476";
+    } else if (d.total < 20){
+      return "#41ab5d";
+    } else if (d.total < 40){
+      return "#238b45";
+    } else if (d.total < 60){
+      return "#006d2c";
+    } else {
+      return "#00441b";
+    }
+  });
 }
 
+function undergraduate(){
+  var paths = d3.selectAll("path");
+  paths
+  .on("mouseover", function(d){
+    d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+    d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
+    d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+  })
+  .on("mouseout", function(){
+    d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+    d3.select("#mapinfo").classed("hidden", true);
+  })
+  .transition(1000).style("fill",function(d){
+    if (d.ugrad == 0){
+      return "#e5f5e0";
+    } else if (d.ugrad < 5){
+      return "#a1d99b";
+    } else if (d.ugrad < 10){
+      return "#74c476";
+    } else if (d.ugrad < 20){
+      return "#41ab5d";
+    } else if (d.ugrad < 40){
+      return "#238b45";
+    } else if (d.ugrad < 60){
+      return "#006d2c";
+    } else {
+      return "#00441b";
+    }
+  });
+}
 
-// // Event function
-// var handler = function() {
-//   if (select.value == "Total Students") {
-//     console.log('working!');
-//     paths
-//     .on("mouseover", function(d){
-//       d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-//       d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-//     })
-//     .on("mouseout", function(){
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-//       d3.select("#mapinfo").classed("hidden", true);
-//     })
-//     .transition().style("fill",function(d){
-//       if (d.total == 0){
-//         return "#e5f5e0";
-//       } else if (d.total < 5){
-//         return "#a1d99b";
-//       } else if (d.total < 10){
-//         return "#74c476";
-//       } else if (d.total < 20){
-//         return "#41ab5d";
-//       } else if (d.total < 40){
-//         return "#238b45";
-//       } else if (d.total < 60){
-//         return "#006d2c";
-//       } else {
-//         return "#00441b";
-//       }
-//       });
-//   } else if (select.value == "Undergraduate") {
-//     paths
-//     .on("mouseover", function(d){
-//       d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-//       d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-//     })
-//     .on("mouseout", function(){
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-//       d3.select("#mapinfo").classed("hidden", true);
-//     })
-//     .transition(1000).style("fill",function(d){
-//       if (d.ugrad == 0){
-//         return "#e5f5e0";
-//       } else if (d.ugrad < 5){
-//         return "#a1d99b";
-//       } else if (d.ugrad < 10){
-//         return "#74c476";
-//       } else if (d.ugrad < 20){
-//         return "#41ab5d";
-//       } else if (d.ugrad < 40){
-//         return "#238b45";
-//       } else if (d.ugrad < 60){
-//         return "#006d2c";
-//       } else {
-//         return "#00441b";
-//       }
-//     });
-//   } else if (select.value == "Graduate") {
-//     console.log('working!');
-//     paths
-//     .on("mouseover", function(d){
-//       d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-//       d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-//     })
-//     .on("mouseout", function(){
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-//       d3.select("#mapinfo").classed("hidden", true);
-//     })
-//     .transition(1000).style("fill",function(d){
-//       if (d.grad == 0){
-//         return "#e5f5e0";
-//       } else if (d.grad < 5){
-//         return "#a1d99b";
-//       } else if (d.grad < 10){
-//         return "#74c476";
-//       } else if (d.grad < 20){
-//         return "#41ab5d";
-//       } else if (d.grad < 40){
-//         return "#238b45";
-//       } else if (d.grad < 60){
-//         return "#006d2c";
-//       } else {
-//         return "#00441b";
-//       }
-//     });
-//   } else if (select.value == "Exchange") {
-//     console.log('working!');
-//     paths
-//       .on("mouseover", function(d){
-//       d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
-//       d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
-//     })
-//     .on("mouseout", function(){
-//       d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
-//       d3.select("#mapinfo").classed("hidden", true);
-//     })
-//     .transition(1000).style("fill",function(d){
-//       if (d.exchange == 0){
-//         return "#e5f5e0";
-//       } else if (d.exchange <= 1){
-//         return "#a1d99b";
-//       } else if (d.exchange <= 3){
-//         return "#238b45";
-//       } else {
-//         return "#00441b";
-//       }
-//     });
-//   }
-// };
+function graduate(){
+  var paths = d3.selectAll("path");
+  paths
+  .on("mouseover", function(d){
+    d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+    d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
+    d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+  })
+  .on("mouseout", function(){
+    d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+    d3.select("#mapinfo").classed("hidden", true);
+  })
+  .transition(1000).style("fill",function(d){
+    if (d.grad == 0){
+      return "#e5f5e0";
+    } else if (d.grad < 5){
+      return "#a1d99b";
+    } else if (d.grad < 10){
+      return "#74c476";
+    } else if (d.grad < 20){
+      return "#41ab5d";
+    } else if (d.grad < 40){
+      return "#238b45";
+    } else if (d.grad < 60){
+      return "#006d2c";
+    } else {
+      return "#00441b";
+    }
+  });
+}
+
+function exchange(){
+  var paths = d3.selectAll("path");
+  paths
+  .on("mouseover", function(d){
+    d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
+    d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
+    d3.select(this).transition().style("stroke","black").style("stroke-width","1.25px");
+  })
+  .on("mouseout", function(){
+    d3.select(this).transition().style("stroke","black").style("stroke-width","0.25px");
+    d3.select("#mapinfo").classed("hidden", true);
+  })
+  .transition(1000).style("fill",function(d){
+    if (d.exchange == 0){
+      return "#e5f5e0";
+    } else if (d.exchange <= 1){
+      return "#a1d99b";
+    } else if (d.exchange <= 3){
+      return "#238b45";
+    } else {
+      return "#00441b";
+    }
+  });
+}
