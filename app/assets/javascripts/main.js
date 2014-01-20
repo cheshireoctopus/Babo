@@ -64,15 +64,31 @@ function map() {
       .style("fill", "#ddd")
       .style("cursor", "pointer")
       .style("stroke","black")
-      .style("stroke-width", "0.25px");
+      .style("stroke-width", "0.25px")
+      .style("fill",function(d){
+        if (d.total == 0){
+          return "#e5f5e0";
+        } else if (d.total < 5){
+          return "#a1d99b";
+        } else if (d.total < 10){
+          return "#74c476";
+        } else if (d.total < 20){
+          return "#41ab5d";
+        } else if (d.total < 40){
+          return "#238b45";
+        } else if (d.total < 60){
+          return "#006d2c";
+        } else {
+          return "#00441b";
+        }
+        });
   }
   //End 'Ready' function
-
 }
 
 window.onload = function() {
 
-  path = d3.selectAll("path");
+  paths = d3.selectAll("path");
   mapinfo = d3.select("#mapinfo");
 
   // Event function
@@ -97,7 +113,7 @@ window.onload = function() {
 };
 
 function total() {
-  path
+  paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.total+" Total students</span>").classed("hidden", false);
@@ -127,7 +143,7 @@ function total() {
 }
 
 function undergraduate() {
-  path
+  paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.ugrad+" Undergraduate students</span>").classed("hidden", false);
@@ -157,7 +173,7 @@ function undergraduate() {
 }
 
 function graduate() {
-  path
+  paths
       .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.grad+" graduate students</span>").classed("hidden", false);
@@ -187,7 +203,7 @@ function graduate() {
 }
 
 function exchange() {
-  path
+  paths
         .on("mouseover", function(d){
         d3.select("#mapinfo").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");
         d3.select("#mapinfo").html("<strong>"+d.name+"</strong><br><span class='toolStudent'>"+d.exchange+" exchange students</span>").classed("hidden", false);
