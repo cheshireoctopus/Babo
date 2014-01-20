@@ -6,29 +6,22 @@
 }
 
 /*NAVIGATION*/
-.styled-select {
-  margin: 0 auto;
-  margin-top: 1%;
-  width: 15%;
-  overflow: hidden;
-  background: url(/arrow.png) no-repeat right #ddd;
-  border: 5px solid rgb(37,90,60);
+nav {
+  font-family: 'Exo 2', sans-serif; font-weight: 500;
+  padding-top: 1%;
 }
 
-.styled-select select {
-  background: transparent;
-  width: 100%;
-  padding: 5px;
-  font-size: 100%;
-  line-height: 1;
-  border: 0;
-  border-radius: 0;
-  height: 34px;
-  -webkit-appearance: none;
+#nav1 {
+  text-decoration: underline;
 }
 
-.styled-select select:hover {
+.navi {
   cursor: pointer;
+}
+
+.naviOn {
+  text-decoration: underline;
+  color: rgb(37,90,60);
 }
 
 /*MAP*/

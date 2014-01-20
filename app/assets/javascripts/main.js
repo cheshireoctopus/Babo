@@ -13,26 +13,11 @@ $(function() {
 
 
   // Navigation
-  $('#nav1').css("text-decoration", "underline");
-  $('.navi').click(function(){
-    $('.navi').css("text-decoration", "none");
-  });
-  $('#nav1').click(function(){
-    $(this).css("text-decoration", "underline");
-    total();
-  });
-  $('#nav2').click(function(){
-    $(this).css("text-decoration", "underline");
-    undergraduate();
-  });
-  $('#nav3').click(function(){
-    $(this).css("text-decoration", "underline");
-    graduate();
-  });
-  $('#nav4').click(function(){
-    $(this).css("text-decoration", "underline");
-    exchange();
-  });
+  $('.navi').click(function(){$('.navi').css("text-decoration", "none");});
+  $('#nav1').click(function(){$(this).css("text-decoration", "underline");total();});
+  $('#nav2').click(function(){$(this).css("text-decoration", "underline");undergraduate();});
+  $('#nav3').click(function(){$(this).css("text-decoration", "underline");graduate();});
+  $('#nav4').click(function(){$(this).css("text-decoration", "underline");exchange();});
 });
 
 
