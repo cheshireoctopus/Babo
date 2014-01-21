@@ -21,19 +21,6 @@ body {
   line-height: 26px;
 }
 
-h1,h2,h3,h4,h5,h6,p {
- font-family: inherit;
- font-size: inherit;
-}
-h1 {
- font-size: 4em;
- line-height: 1em;
-}
-h2 {
- font-size: 3em;
- line-height: 1em;
-}
-
 header {
   background-color: rgb(37,90,60);
   padding: 10px;
@@ -42,7 +29,7 @@ header {
 
 footer {
   font-family: 'Exo 2', sans-serif; font-weight: 300;
-  font-size: 75%;
+  font-size: 45%;
   width: 100%;
   bottom: 0;
   position: absolute;
