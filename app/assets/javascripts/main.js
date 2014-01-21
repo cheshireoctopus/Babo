@@ -15,7 +15,7 @@ $(function() {
   function on(nav){
     $('.navi').css("font-weight","300");
     $('#onNav').remove();
-    $(nav).css("font-weight","500");
+    $(nav).css("font-weight","700");
     $(nav).prepend('<i class="fa fa-caret-right" id="onNav"></i>');
   }
 
