@@ -11,9 +11,27 @@
  *= require_self
  *= require_tree .
  */
+html {
+  font-size: 100%;
+}
 body {
   margin: 0;
   background: #f7fcf5;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+ font-family: inherit;
+ font-size: inherit;
+}
+h1 {
+ font-size: 4em;
+ line-height: 1em;
+}
+h2 {
+ font-size: 3em;
+ line-height: 1em;
 }
 
 header {
@@ -23,9 +41,9 @@ header {
 }
 
 footer {
+  font-family: 'Exo 2', sans-serif; font-weight: 300;
+  font-size: 75%;
   width: 100%;
-  background-color: whiteSmoke;
-  border-top: 1px solid #DDD;
   bottom: 0;
   position: absolute;
   text-align: center;

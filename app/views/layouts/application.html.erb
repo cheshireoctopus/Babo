@@ -3,6 +3,7 @@
 <head>
   <link rel="shortcut icon" href="/favicon.ico" />
   <link href='https://fonts.googleapis.com/css?family=Exo+2:300,700,500' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <title>Babson. Visualized.</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -10,11 +11,20 @@
 </head>
 <body>
     <div id="container">
-        <header>
-            <span class="hclass" id="htitle">Babson Fall 2013 by Home Location </span><span class="hclass" id="note">total undergraduate, graduate, and exchange students</span>
-        </header>
-        <%= yield %>
+      <%= render "layouts/header" %>
+      <%= yield %>
     </div>
-<%= render "layouts/ga" %>
+    <%= render "layouts/footer" %>
+    <%= render "layouts/ga" %>
+    <script>
+        $('body').flowtype({
+            minimum   : 500,
+            maximum   : 800,
+            minFont   : 12,
+            maxFont   : 40,
+            fontRatio : 30,
+            lineRatio : 1.45
+        });
+    </script>
 </body>
 </html>
