@@ -12,15 +12,17 @@ $(function() {
   }).trigger("resize");
 
   // Navigation
-  $('.navi').click(function(){$('.navi').css("text-decoration", "none");});
-  $('#nav1').click(function(){$(this).css("text-decoration", "underline");total();});
-  $('#nav2').click(function(){
-    console.log(this);
-    $(this).css("text-decoration", "underline");
-    undergraduate();
-  });
-  $('#nav3').click(function(){$(this).css("text-decoration", "underline");graduate();});
-  $('#nav4').click(function(){$(this).css("text-decoration", "underline");exchange();});
+  function on(nav){
+    $('.navi').css("font-weight","300");
+    $('#onNav').remove();
+    $(nav).css("font-weight","500");
+    $(nav).prepend('<i class="fa fa-caret-right" id="onNav"></i>');
+  }
+
+  $('#nav1').click(function(){on(this);total();});
+  $('#nav2').click(function(){on(this);undergraduate();});
+  $('#nav3').click(function(){on(this);graduate();});
+  $('#nav4').click(function(){on(this);exchange();});
 });
 
 

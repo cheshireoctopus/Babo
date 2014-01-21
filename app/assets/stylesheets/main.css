@@ -7,16 +7,17 @@
 
 /*NAVIGATION*/
 nav {
-  font-family: 'Exo 2', sans-serif; font-weight: 500;
+  font-family: 'Exo 2', sans-serif;
   padding-top: 1%;
 }
 
 #nav1 {
-  text-decoration: underline;
+  font-weight: 500;
 }
 
 .navi {
   cursor: pointer;
+  font-weight: 300;
 }
 
 .naviOn {
